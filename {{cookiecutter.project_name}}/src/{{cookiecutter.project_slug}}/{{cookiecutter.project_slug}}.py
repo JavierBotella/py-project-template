@@ -4,7 +4,7 @@ import logging
 import os
 
 
-def load_config(debug=False):
+def load_config(debug: bool=False) -> None:
     if debug:
         logging.basicConfig(level=logging.DEBUG)
         fmt = '%(asctime)s - %(levelname)-2s [%(filename)s:%(lineno)d][%(funcName)1s] %(message)s'
@@ -17,13 +17,13 @@ class {{(cookiecutter.project_slug.title()).replace('_', '')}}(object):
     def __init__(self):
         pass
 
-    def say_hello(self):
+    def say_hello(self) -> None:
         print('hello!')
 
 
 @click.command('hello', help='say hello')
 @click.pass_context
-def hello(ctx):
+def hello(ctx: object) -> None:
     print('hey!')
     logging.debug('debug')
 
@@ -32,7 +32,7 @@ CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 @click.group(context_settings=CONTEXT_SETTINGS)
 @click.option('-d', '--debug', is_flag=True, help='Debug mode on')
 @click.pass_context
-def cli(ctx, debug):
+def cli(ctx: object, debug: bool):
     ctx.obj = {}
     ctx.obj['debug'] = debug
 
