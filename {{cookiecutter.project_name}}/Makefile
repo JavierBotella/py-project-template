@@ -22,9 +22,9 @@ help:
 	@echo "test-all - run tests on every Python version with tox"
 	@echo "coverage - check code coverage quickly with the default Python"
 	@echo "docs - generate Sphinx HTML documentation, including API docs"
-	@echo "release - package and upload a release"
-	@echo "dist - package"
-	@echo "install - install the package to the active Python's site-packages"
+	@echo "release - package and upload a release [Disabled]"
+	@echo "dist - package [Disabled]"
+	@echo "install - install the package"
 
 clean: clean-build clean-pyc clean-test
 
@@ -82,13 +82,13 @@ servedocs: docs
 	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
 
 release: clean
-	python setup.py sdist upload
-	python setup.py bdist_wheel upload
+	#python setup.py sdist upload
+	#python setup.py bdist_wheel upload
 
 dist: clean
-	python setup.py sdist
-	python setup.py bdist_wheel
-	ls -l dist
+	#python setup.py sdist
+	#python setup.py bdist_wheel
+	#ls -l dist
 
 install: clean
 	python setup.py install
